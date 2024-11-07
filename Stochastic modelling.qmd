@@ -39,7 +39,7 @@ $dS_t=\mu S_tdt+\sigma S_tdW_t$ , where $W_t ~$ \~Weiner Process.
 
 #### **Diagnostic**:
 
-  Now our stock data to fit the GBM, we must have $logS_t-logS_{t-1}$ follows normal distribution. We will diagnos it graphically using Histogram.
+Now our stock data to fit the GBM, we must have $logS_t-logS_{t-1}$ follows normal distribution. We will diagnos it graphically using Histogram.
 
 ```{r}
         ratio=rep(0,times=dim(data)[1])
@@ -53,6 +53,7 @@ $dS_t=\mu S_tdt+\sigma S_tdW_t$ , where $W_t ~$ \~Weiner Process.
         hist(log,main = "Histogram of Log difference")
 
 ```
+
 From Histogram it is evident that the data is not coming from a Normal population . Still we fit a GBM to see how it work.
 
 #### **Model fitting:**
@@ -61,14 +62,14 @@ From Histogram it is evident that the data is not coming from a Normal populatio
 
 Here we estimated the parametres of GBM using MOM estimates. We found,
 
-| Parametre             | Value     |
-|-----------------------|-----------|
-| $$                    
-     \mu                
-     $$                 | -0.00208  |
-| $$                    
-     \sigma             
-     $$                 | 0.1468849 |
+| Parametre                | Value     |
+|--------------------------|-----------|
+| $$                       
+      \mu                  
+      $$                   | -0.00208  |
+| $$                       
+      \sigma               
+      $$                   | 0.1468849 |
 
 : Parametre
 
@@ -126,14 +127,14 @@ Here the p-value for the test is coming as 0. That means the data is not fitting
 
 Similarly as above but using MLE estimates of the GBM we fit it with our data. The estimates are,
 
-| Value                       | Parametre |
-|-----------------------------|-----------|
-| $$                          
-        \mu                   
-        $$                    | -0.00208  |
-| $$                          
-        \sigma                
-        $$                    | 0.14687   |
+| Value                          | Parametre |
+|--------------------------------|-----------|
+| $$                             
+         \mu                     
+         $$                      | -0.00208  |
+| $$                             
+         \sigma                  
+         $$                      | 0.14687   |
 
 : Parametre
 
@@ -146,7 +147,9 @@ matplot(predict_m(5,mu=mu_mle,sigma =sigma_mle),type="l",main="5 Simulated paths
 lines(data$OPEN,col="red",type="l",lwd=2)
 legend("topright",legend = c("Original","Simulated"),lwd=c(2,1))
 ```
+
 #### Comaparison between two methods of estimation
+
 MOM and MLE is performing almost equally in this data. The chi square test statistic for MOM is 1091429 whereas the value for the MLE is 1429156. So we may conclude that MOM estimate is relatively better working then MLE estimate.
 
 ##### **Goodness of fit** **:**
@@ -241,7 +244,6 @@ legend("topright",legend = c("Original","Simulated"),lwd=c(2,1))
 
 ```
 
-
 #### **Goodness of fit:**
 
 ```{r}
@@ -256,7 +258,7 @@ Here also the Goodness of fit Chi- Square test is giving p-value zero, hence the
 
 ## **Clustering:**
 
-As we are guessing that there may be some cluster there ,so we applied K- nearest neighbour method here with k=2. 
+As we are guessing that there may be some cluster there ,so we applied K- nearest neighbour method here with k=2.
 
 ```{r}
 a=kmeans(data$OPEN,2)
@@ -271,6 +273,7 @@ The method also supports our claim as there are two cluster there.
 We saw that both the model fails to give satisfactory fit to our data. Now we will discuss about the two methods seperately.
 
 ### **GBM:**
+
 GBM usually simulate data to be increasing manner. So its highly unlikely for real world data to get fitted well. But if the time interval is very small or the time gap between two observation is fairly large , then it can be assumed that there is not such jumps in that case. So we can assume that in that case GBM may be a good fit to the data. Actually, for stable market GBM works well. Here our log return was far from normality and also we had some jumps in the data, so the GBM approach failed.
 
 ### **Jump Diffusion Model :**
@@ -286,9 +289,11 @@ We tried KNN clustering also. It was giving us two clusters, one in the first an
 So from the above analysis we get the impression that may be more sophisticated method applied on each cluster fit the data well. Or we can go for another Jump diffusions model to fit it well. But our simulated paths in the Jump diffusion model is pretty close representing our data.
 
 ## Acknowledgement
-I would like to express my sincere gratitude to Professor Abhik Ghosh and Sourojyoti Ghosh for their invaluable guidance and support throughout this work. Their insights and expertise in finance and modelling greatly enhanced my understanding and helped shape this assignment. I am also grateful to my friends for their encouragement and unwavering support. 
+
+I would like to express my sincere gratitude to Professor Abhik Ghosh and Sourojyoti Ghosh for their invaluable guidance and support throughout this work. Their insights and expertise in finance and modelling greatly enhanced my understanding and helped shape this assignment. I am also grateful to my friends for their encouragement and unwavering support.
 
 ## Reference
-1. Hull, J. C. (2021). Options, Futures, and Other Derivatives (10th ed.). Pearson.
-2. Merton, R. C. (1976). Option Pricing When Underlying Stock Returns Are Discontinuous. Journal of Financial Economics, 3(1-2), 125-144.
-3. 3 Blue 1 Brown (YouTube Channel)
+
+1.  Hull, J. C. (2021). Options, Futures, and Other Derivatives (10th ed.). Pearson.
+2.  Merton, R. C. (1976). Option Pricing When Underlying Stock Returns Are Discontinuous. Journal of Financial Economics, 3(1-2), 125-144.
+3.  3 Blue 1 Brown (YouTube Channel)

@@ -32,14 +32,14 @@
     "href": "index.html#skills",
     "title": "NonCoder",
     "section": "Skills",
-    "text": "Skills\nR Python Latex Regression Machine Learning Deep Learning Keras\nTensorflow Quarto Non-Parametric Regression Outlier Detection\nLogistic Regression Decision Tree"
+    "text": "Skills\nR Python SQL Latex Regression Machine Learning Deep Learning Keras Pytorch\nTensorflow Quarto Non-Parametric Regression Outlier Detection\nLogistic Regression Decision Tree"
   },
   {
     "objectID": "index.html#projects",
     "href": "index.html#projects",
     "title": "NonCoder",
     "section": "Projects",
-    "text": "Projects\n1.Cosmological Data Analysis - Under:Prof. Supratik Pal,Indian Statistical Institute\n\nWorked on: Supernova Type-Ia Data Analysis,Outlier Detection,Model fitting ,Data Extraction Process 2.Deep Learning and Text Recognistion -Under:Prof. Deepayan Sarkar,Indian Statistical Institute"
+    "text": "Projects\n1.Cosmological Data Analysis - Under:Prof. Supratik Pal,Indian Statistical Institute\n\nWorked on: Supernova Type-Ia Data Analysis,Outlier Detection,Model fitting ,Data Extraction Process\n\n2.Deep Learning and Text Recognistion -Under:Prof. Deepayan Sarkar,Indian Statistical Institute"
   },
   {
     "objectID": "Newton_Ralphson.html",
@@ -112,69 +112,6 @@
     "text": "So the final code\n\ndef pyramid(n):\n  for i in range(n,0,-1):\n    print(\" \"*(i-1)+\" *\"*(n-i))\npyramid(5)\n\n    \n    *\n   * *\n  * * *\n * * * *"
   },
   {
-    "objectID": "docs/Stochastic modelling.html",
-    "href": "docs/Stochastic modelling.html",
-    "title": "Stochastic Modelling of Stock Price Data",
-    "section": "",
-    "text": "Stock Price Modelling is a very well celebrated as well as challenging job for the people in industry as well as in academics. There are several approaches. In this paper we will implement stochastic modelling based on mainly a dataset of Bank NIFTY starting from 1st Jan,2020 and in each interval of 1 min. We have 5000 observations there. For the entire study, we will try to model Open Price throughout."
-  },
-  {
-    "objectID": "docs/Stochastic modelling.html#introduction",
-    "href": "docs/Stochastic modelling.html#introduction",
-    "title": "Stochastic Modelling of Stock Price Data",
-    "section": "",
-    "text": "Stock Price Modelling is a very well celebrated as well as challenging job for the people in industry as well as in academics. There are several approaches. In this paper we will implement stochastic modelling based on mainly a dataset of Bank NIFTY starting from 1st Jan,2020 and in each interval of 1 min. We have 5000 observations there. For the entire study, we will try to model Open Price throughout."
-  },
-  {
-    "objectID": "docs/Stochastic modelling.html#data",
-    "href": "docs/Stochastic modelling.html#data",
-    "title": "Stochastic Modelling of Stock Price Data",
-    "section": "Data",
-    "text": "Data\nLets take a look over the data,\n\n\n'data.frame':   5000 obs. of  8 variables:\n $ DATE  : Date, format: \"2020-01-01\" \"2020-01-01\" ...\n $ TIME  : POSIXct, format: \"2024-11-07 09:15:00\" \"2024-11-07 09:16:00\" ...\n $ OPEN  : num  32417 32457 32446 32445 32461 ...\n $ HIGH  : num  32465 32466 32452 32464 32474 ...\n $ LOW   : num  32354 32445 32445 32435 32457 ...\n $ CLOSE : num  32456 32445 32445 32464 32465 ...\n $ VOLUME: int  36240 18780 14900 18120 11540 9640 8480 8140 4840 10680 ...\n $ OI    : int  1304980 1304980 1316960 1316960 1316960 1328860 1328860 1328860 1337200 1337200 ...\n\n\nThe scatter plot of the data ,"
-  },
-  {
-    "objectID": "docs/Stochastic modelling.html#modelling",
-    "href": "docs/Stochastic modelling.html#modelling",
-    "title": "Stochastic Modelling of Stock Price Data",
-    "section": "Modelling",
-    "text": "Modelling\n\nGeometric Brownian Motion:\nThe SDE is,\n\\(dS_t=\\mu S_tdt+\\sigma S_tdW_t\\) , where \\(W_t ~\\) ~Weiner Process.\n\nDiagnostic:\nNow our stock data to fit the GBM, we must have \\(logS_t-logS_{t-1}\\) follows normal distribution. We will diagnos it graphically using Histogram.\n\n\n\n\n\nFrom Histogram it is evident that the data is not coming from a Normal population . Still we fit a GBM to see how it work.\n\n\nModel fitting:\n\nMethod of Moment estimates:\nHere we estimated the parametres of GBM using MOM estimates. We found,\n\nParametre\n\n\n\n\n\n\nParametre\nValue\n\n\n\n\n\\[                          \n       \\mu                    \n       \\]\n-0.00208\n\n\n\\[                          \n       \\sigma                 \n       \\]\n0.1468849\n\n\n\n\n\nFit:\n\n\n\n\n\n\n\nGoodness of fit test:\nHere we are calculating the Chi- Square statistic based on a simulated path.\n\n\nP-Value:  0\n\n\nHere the p-value for the test is coming as 0. That means the data is not fitting well in this case.\n\n\nMaximum Likelihood Estimates:\nSimilarly as above but using MLE estimates of the GBM we fit it with our data. The estimates are,\n\nParametre\n\n\n\n\n\n\nValue\nParametre\n\n\n\n\n\\[                                \n          \\mu                       \n          \\]\n-0.00208\n\n\n\\[                                \n          \\sigma                    \n          \\]\n0.14687\n\n\n\n\n\nFit:\n\n\n\n\n\n\n\n\nComaparison between two methods of estimation\nMOM and MLE is performing almost equally in this data. The chi square test statistic for MOM is 1091429 whereas the value for the MLE is 1429156. So we may conclude that MOM estimate is relatively better working then MLE estimate.\n\nGoodness of fit :\nSimilarly as above,\n\n\nP-Value:  0\n\n\nThe p-value is coming to be zero. Hence the fit is not good which is also evident from the plot itself.\n\n\n\n\nJump Diffusion Model:\nFrom the plot of the data , we can see that there is several jumps in the data. So for modelling this kind of data, Jump Diffusion Model is very famous in literature.\nHere the SDE is,\n\\[\ndS_t=\\mu S_tdt+\\sigma S_tdW_t+JS_tdN_t \\], where \\(N_t\\)~ Poisson process with parametre \\(\\lambda\\) and \\(J\\) represents the jump size. Here we are modelling that, \\(J\\) follows logNormal(\\(\\mu_J,\\sigma_j\\))\n\nFit:\nThe fitting process involves three steps,\n\nFix a threshold, in practice 3- \\(\\sigma\\) limits are taken.\nValue of the price greater than the threshold are used to estimate the parametres for \\(J\\) and \\(N_t\\) . But we did’nt get reasonable output there. So we fine tune it to work better.\nValue of the price lesser than the threshold are used to estimate the other parametres. Here also we took the same approach .\n\n\n\n\n\n\n\n\nGoodness of fit:\n\n\nP-Value:  0\n\n\nHere also the Goodness of fit Chi- Square test is giving p-value zero, hence the null hypothesis that the data is fitting the model is rejected."
-  },
-  {
-    "objectID": "docs/Stochastic modelling.html#clustering",
-    "href": "docs/Stochastic modelling.html#clustering",
-    "title": "Stochastic Modelling of Stock Price Data",
-    "section": "Clustering:",
-    "text": "Clustering:\nAs we are guessing that there may be some cluster there ,so we applied K- nearest neighbour method here with k=2.\n\n\n\n\n\nThe method also supports our claim as there are two cluster there."
-  },
-  {
-    "objectID": "docs/Stochastic modelling.html#comments-on-fit",
-    "href": "docs/Stochastic modelling.html#comments-on-fit",
-    "title": "Stochastic Modelling of Stock Price Data",
-    "section": "Comments on fit:",
-    "text": "Comments on fit:\nWe saw that both the model fails to give satisfactory fit to our data. Now we will discuss about the two methods seperately.\n\nGBM:\nGBM usually simulate data to be increasing manner. So its highly unlikely for real world data to get fitted well. But if the time interval is very small or the time gap between two observation is fairly large , then it can be assumed that there is not such jumps in that case. So we can assume that in that case GBM may be a good fit to the data. Actually, for stable market GBM works well. Here our log return was far from normality and also we had some jumps in the data, so the GBM approach failed.\n\n\nJump Diffusion Model :\nIn literature , Jump Diffusion Model and its extensions are widely used for modelling the data with jumps. But here we are using the basic model. It is capturing the jump but due to high variability it is not efficient.\n\n\nClustering:\nWe tried KNN clustering also. It was giving us two clusters, one in the first and last with relatively high values and one in the middle with the low values. We may extend it to model this clusters seperately."
-  },
-  {
-    "objectID": "docs/Stochastic modelling.html#conclusion",
-    "href": "docs/Stochastic modelling.html#conclusion",
-    "title": "Stochastic Modelling of Stock Price Data",
-    "section": "Conclusion",
-    "text": "Conclusion\nSo from the above analysis we get the impression that may be more sophisticated method applied on each cluster fit the data well. Or we can go for another Jump diffusions model to fit it well. But our simulated paths in the Jump diffusion model is pretty close representing our data."
-  },
-  {
-    "objectID": "docs/Stochastic modelling.html#acknowledgement",
-    "href": "docs/Stochastic modelling.html#acknowledgement",
-    "title": "Stochastic Modelling of Stock Price Data",
-    "section": "Acknowledgement",
-    "text": "Acknowledgement\nI would like to express my sincere gratitude to Professor Abhik Ghosh and Sourojyoti Ghosh for their invaluable guidance and support throughout this work. Their insights and expertise in finance and modelling greatly enhanced my understanding and helped shape this assignment. I am also grateful to my friends for their encouragement and unwavering support."
-  },
-  {
-    "objectID": "docs/Stochastic modelling.html#reference",
-    "href": "docs/Stochastic modelling.html#reference",
-    "title": "Stochastic Modelling of Stock Price Data",
-    "section": "Reference",
-    "text": "Reference\n\nHull, J. C. (2021). Options, Futures, and Other Derivatives (10th ed.). Pearson.\nMerton, R. C. (1976). Option Pricing When Underlying Stock Returns Are Discontinuous. Journal of Financial Economics, 3(1-2), 125-144.\n3 Blue 1 Brown (YouTube Channel)"
-  },
-  {
     "objectID": "Stochastic modelling.html",
     "href": "Stochastic modelling.html",
     "title": "Stochastic Modelling of Stock Price Data",
@@ -200,7 +137,7 @@
     "href": "Stochastic modelling.html#modelling",
     "title": "Stochastic Modelling of Stock Price Data",
     "section": "Modelling",
-    "text": "Modelling\n\nGeometric Brownian Motion:\nThe SDE is,\n\\(dS_t=\\mu S_tdt+\\sigma S_tdW_t\\) , where \\(W_t ~\\) ~Weiner Process.\n\nDiagnostic:\nNow our stock data to fit the GBM, we must have \\(logS_t-logS_{t-1}\\) follows normal distribution. We will diagnos it graphically using Histogram.\n\n\n\n\n\nFrom Histogram it is evident that the data is not coming from a Normal population . Still we fit a GBM to see how it work.\n\n\nModel fitting:\n\nMethod of Moment estimates:\nHere we estimated the parametres of GBM using MOM estimates. We found,\n\nParametre\n\n\n\n\n\n\nParametre\nValue\n\n\n\n\n\\[                    \n     \\mu                \n     \\]\n-0.00208\n\n\n\\[                    \n     \\sigma             \n     \\]\n0.1468849\n\n\n\n\n\nFit:\n\n\n\n\n\n\n\nGoodness of fit test:\nHere we are calculating the Chi- Square statistic based on a simulated path.\n\n\nP-Value:  0\n\n\nHere the p-value for the test is coming as 0. That means the data is not fitting well in this case.\n\n\nMaximum Likelihood Estimates:\nSimilarly as above but using MLE estimates of the GBM we fit it with our data. The estimates are,\n\nParametre\n\n\n\n\n\n\nValue\nParametre\n\n\n\n\n\\[                          \n        \\mu                   \n        \\]\n-0.00208\n\n\n\\[                          \n        \\sigma                \n        \\]\n0.14687\n\n\n\n\n\nFit:\n\n\n\n\n\n\n\n\nComaparison between two methods of estimation\nMOM and MLE is performing almost equally in this data. The chi square test statistic for MOM is 1091429 whereas the value for the MLE is 1429156. So we may conclude that MOM estimate is relatively better working then MLE estimate.\n\nGoodness of fit :\nSimilarly as above,\n\n\nP-Value:  0\n\n\nThe p-value is coming to be zero. Hence the fit is not good which is also evident from the plot itself.\n\n\n\n\nJump Diffusion Model:\nFrom the plot of the data , we can see that there is several jumps in the data. So for modelling this kind of data, Jump Diffusion Model is very famous in literature.\nHere the SDE is,\n\\[\ndS_t=\\mu S_tdt+\\sigma S_tdW_t+JS_tdN_t \\], where \\(N_t\\)~ Poisson process with parametre \\(\\lambda\\) and \\(J\\) represents the jump size. Here we are modelling that, \\(J\\) follows logNormal(\\(\\mu_J,\\sigma_j\\))\n\nFit:\nThe fitting process involves three steps,\n\nFix a threshold, in practice 3- \\(\\sigma\\) limits are taken.\nValue of the price greater than the threshold are used to estimate the parametres for \\(J\\) and \\(N_t\\) . But we did’nt get reasonable output there. So we fine tune it to work better.\nValue of the price lesser than the threshold are used to estimate the other parametres. Here also we took the same approach .\n\n\n\n\n\n\n\n\nGoodness of fit:\n\n\nP-Value:  0\n\n\nHere also the Goodness of fit Chi- Square test is giving p-value zero, hence the null hypothesis that the data is fitting the model is rejected."
+    "text": "Modelling\n\nGeometric Brownian Motion:\nThe SDE is,\n\\(dS_t=\\mu S_tdt+\\sigma S_tdW_t\\) , where \\(W_t ~\\) ~Weiner Process.\n\nDiagnostic:\nNow our stock data to fit the GBM, we must have \\(logS_t-logS_{t-1}\\) follows normal distribution. We will diagnos it graphically using Histogram.\n\n\n\n\n\nFrom Histogram it is evident that the data is not coming from a Normal population . Still we fit a GBM to see how it work.\n\n\nModel fitting:\n\nMethod of Moment estimates:\nHere we estimated the parametres of GBM using MOM estimates. We found,\n\nParametre\n\n\n\n\n\n\nParametre\nValue\n\n\n\n\n\\[                       \n      \\mu                  \n      \\]\n-0.00208\n\n\n\\[                       \n      \\sigma               \n      \\]\n0.1468849\n\n\n\n\n\nFit:\n\n\n\n\n\n\n\nGoodness of fit test:\nHere we are calculating the Chi- Square statistic based on a simulated path.\n\n\nP-Value:  0\n\n\nHere the p-value for the test is coming as 0. That means the data is not fitting well in this case.\n\n\nMaximum Likelihood Estimates:\nSimilarly as above but using MLE estimates of the GBM we fit it with our data. The estimates are,\n\nParametre\n\n\n\n\n\n\nValue\nParametre\n\n\n\n\n\\[                             \n         \\mu                     \n         \\]\n-0.00208\n\n\n\\[                             \n         \\sigma                  \n         \\]\n0.14687\n\n\n\n\n\nFit:\n\n\n\n\n\n\n\n\nComaparison between two methods of estimation\nMOM and MLE is performing almost equally in this data. The chi square test statistic for MOM is 1091429 whereas the value for the MLE is 1429156. So we may conclude that MOM estimate is relatively better working then MLE estimate.\n\nGoodness of fit :\nSimilarly as above,\n\n\nP-Value:  0\n\n\nThe p-value is coming to be zero. Hence the fit is not good which is also evident from the plot itself.\n\n\n\n\nJump Diffusion Model:\nFrom the plot of the data , we can see that there is several jumps in the data. So for modelling this kind of data, Jump Diffusion Model is very famous in literature.\nHere the SDE is,\n\\[\ndS_t=\\mu S_tdt+\\sigma S_tdW_t+JS_tdN_t \\], where \\(N_t\\)~ Poisson process with parametre \\(\\lambda\\) and \\(J\\) represents the jump size. Here we are modelling that, \\(J\\) follows logNormal(\\(\\mu_J,\\sigma_j\\))\n\nFit:\nThe fitting process involves three steps,\n\nFix a threshold, in practice 3- \\(\\sigma\\) limits are taken.\nValue of the price greater than the threshold are used to estimate the parametres for \\(J\\) and \\(N_t\\) . But we did’nt get reasonable output there. So we fine tune it to work better.\nValue of the price lesser than the threshold are used to estimate the other parametres. Here also we took the same approach .\n\n\n\n\n\n\n\n\nGoodness of fit:\n\n\nP-Value:  0\n\n\nHere also the Goodness of fit Chi- Square test is giving p-value zero, hence the null hypothesis that the data is fitting the model is rejected."
   },
   {
     "objectID": "Stochastic modelling.html#clustering",
