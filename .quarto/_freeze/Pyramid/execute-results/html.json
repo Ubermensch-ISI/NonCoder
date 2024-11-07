@@ -1,0 +1,11 @@
+{
+  "hash": "70ee4664558aba0451c721e13b3ae5ec",
+  "result": {
+    "markdown": "---\ntitle: \"Pyramid in Python\"\nformat: html\neditor: visual\n---\n\n## Introduction\n\nPrinting a pyramid is a very basic exercise after learning `Loop` in any programming language.And probably the most challenging one is Pascal Pyramid.\n\n::: columns\n::: {.column width=\"50%\"}\n\n::: {.cell execution_count=1}\n\n::: {.cell-output .cell-output-stdout}\n```\n      \n      *\n     * *\n    * * *\n   * * * *\n  * * * * *\n * * * * * *\n```\n:::\n:::\n\n\n:::\n\n::: {.column width=\"50%\"}\n\n::: {.cell execution_count=2}\n\n::: {.cell-output .cell-output-stdout}\n```\n      \n      1\n     2 2\n    3 3 3\n   4 4 4 4\n  5 5 5 5 5\n 6 6 6 6 6 6\n```\n:::\n:::\n\n\n:::\n:::\n\nIn this vlog ,we will be discussing about how we can make one such using just 4 lines of code.\n\n## Let's Begin\n\nPython is a Low-level programming language.It has many easy or rather user-friendly way of handling strings where as in `C`-Language its not so obvious.So lets come to the topic.\n\nIn `Python` one can add or multiply strings.Like,\n\n::: {.cell execution_count=3}\n``` {.python .cell-code}\n\"*\"*4+\"+\"\n```\n\n::: {.cell-output .cell-output-display execution_count=3}\n```\n'****+'\n```\n:::\n:::\n\n\nYou can also print \"Nothing\"(!) in `Python`\n\n::: {.cell execution_count=4}\n``` {.python .cell-code}\n\"  *\"   #---Printing two space followed by a star\n```\n\n::: {.cell-output .cell-output-display execution_count=4}\n```\n'  *'\n```\n:::\n:::\n\n\n## Building Pyramid\n\nLet's look into the pyramid again.\n\n::: {.cell execution_count=5}\n\n::: {.cell-output .cell-output-stdout}\n```\n    \n    *\n   * *\n  * * *\n * * * *\n```\n:::\n:::\n\n\nNow without looking at `*` ,try to look into the string `*`,a space followed by star.Bang!!!\n\n-   **Steps**\n\n1.  Print `n-1` many gaps and `*`.\n\n2.  Print `n-2` many gaps and two times `*` and so on.\n\n## So the final code\n\n::: {.cell execution_count=6}\n``` {.python .cell-code}\ndef pyramid(n):\n  for i in range(n,0,-1):\n    print(\" \"*(i-1)+\" *\"*(n-i))\npyramid(5)\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n    \n    *\n   * *\n  * * *\n * * * *\n```\n:::\n:::\n\n\n",
+    "supporting": [
+      "Pyramid_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

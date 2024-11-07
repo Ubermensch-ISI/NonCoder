@@ -1,0 +1,11 @@
+{
+  "hash": "698654e4d6e16760cf29a9ba69d53b72",
+  "result": {
+    "markdown": "---\ntitle: \" \"\nformat: html\neditor: visual\n---\n\n# Welcome to my blog.\n\n\n```{html}\n<p style=\"color:red;\">\nHere is my blogs\n</p>\n```\n\n\n1.[Pascal Pyramid in Python](Pyramid.qmd)\n\n",
+    "supporting": [
+      "blogs_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

@@ -1,0 +1,64 @@
+---
+title: "Newton-Ralphson Method"
+format: html
+editor: visual
+---
+
+## Introduction
+
+Newton-Ralphson Method is an well-celebrated Numerical Analsys method for finding root of a function.This is an iterative method for finding roots.
+
+## Boring Mathematics
+
+\$\$ Let $f(x)$ be a continuous function, and let $x_0$ be an initial guess for a root of $f(x)$. The recursion relation for obtaining the next approximation $x_{n+1}$ from the current approximation $x_n$ is given by:
+
+$$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$
+
+where $f'(x_n)$ denotes the derivative of the function $f(x)$ evaluated at $x_n$.\$\
+
+## Problem
+
+Now the problem is that the choice of the initial value of the $x$.In this blog we will see how the choice of the initial value impacts the solution.Let's begin.
+
+## Graph
+```{r}
+#/echo:false
+f=function(x) return(x**3+5)
+f1=function(x) return(3*x**2)
+
+
+require(animation)
+#ani.options(nmax=200)
+
+
+epsi=0.001
+x_start=-2
+
+x_old=x_start
+x_new=x_old+epsi+1
+#saveHTML("~\\Desktop\\hi.html")
+while(abs(x_new-x_old)>epsi)
+{
+
+curve(f(x),-12,12)
+abline(h=0)
+points(x_new,0,col="red")
+text(x_new,-900,"sol")
+arrows(x_new,-900,x_new,-0.1)
+
+x_old=x_new
+x_new=x_old-f(x_old)/f1(x_old)
+ani.pause()
+}
+
+
+curve(f(x),-12,12)
+abline(h=0)
+points(x_new,0,col="red")
+text(x_new,-900,"sol")
+arrows(x_new,-900,x_new,-0.1)
+
+
+```
+
+

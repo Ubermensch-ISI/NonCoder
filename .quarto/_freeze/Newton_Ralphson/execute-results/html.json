@@ -1,0 +1,16 @@
+{
+  "hash": "2204a7b1f31d52106a640ca6731ae09e",
+  "result": {
+    "markdown": "---\ntitle: \"Newton-Ralphson Method\"\nformat: html\neditor: visual\n---\n\n\n## Introduction\n\nNewton-Ralphson Method is an well-celebrated Numerical Analsys method for finding root of a function.This is an iterative method for finding roots.\n\n## Boring Mathematics\n\n\\$\\$ Let $f(x)$ be a continuous function, and let $x_0$ be an initial guess for a root of $f(x)$. The recursion relation for obtaining the next approximation $x_{n+1}$ from the current approximation $x_n$ is given by:\n\n$$x_{n+1} = x_n - \\frac{f(x_n)}{f'(x_n)}$$\n\nwhere $f'(x_n)$ denotes the derivative of the function $f(x)$ evaluated at $x_n$.\\$\\\n\n## Problem\n\nNow the problem is that the choice of the initial value of the $x$.In this blog we will see how the choice of the initial value impacts the solution.Let's begin.\n\n## Graph\n\n::: {.cell}\n\n```{.r .cell-code}\n#/echo:false\nf=function(x) return(x**3+5)\nf1=function(x) return(3*x**2)\n\n\nrequire(animation)\n```\n\n::: {.cell-output .cell-output-stderr}\n```\nLoading required package: animation\n```\n:::\n\n```{.r .cell-code}\n#ani.options(nmax=200)\n\n\nepsi=0.001\nx_start=-2\n\nx_old=x_start\nx_new=x_old+epsi+1\n#saveHTML(\"~\\\\Desktop\\\\hi.html\")\nwhile(abs(x_new-x_old)>epsi)\n{\n\ncurve(f(x),-12,12)\nabline(h=0)\npoints(x_new,0,col=\"red\")\ntext(x_new,-900,\"sol\")\narrows(x_new,-900,x_new,-0.1)\n\nx_old=x_new\nx_new=x_old-f(x_old)/f1(x_old)\nani.pause()\n}\n```\n\n::: {.cell-output-display}\n![](Newton_Ralphson_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n\n::: {.cell-output-display}\n![](Newton_Ralphson_files/figure-html/unnamed-chunk-1-2.png){width=672}\n:::\n\n::: {.cell-output-display}\n![](Newton_Ralphson_files/figure-html/unnamed-chunk-1-3.png){width=672}\n:::\n\n::: {.cell-output-display}\n![](Newton_Ralphson_files/figure-html/unnamed-chunk-1-4.png){width=672}\n:::\n\n::: {.cell-output-display}\n![](Newton_Ralphson_files/figure-html/unnamed-chunk-1-5.png){width=672}\n:::\n\n```{.r .cell-code}\ncurve(f(x),-12,12)\nabline(h=0)\npoints(x_new,0,col=\"red\")\ntext(x_new,-900,\"sol\")\narrows(x_new,-900,x_new,-0.1)\n```\n\n::: {.cell-output-display}\n![](Newton_Ralphson_files/figure-html/unnamed-chunk-1-6.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "Newton_Ralphson_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
